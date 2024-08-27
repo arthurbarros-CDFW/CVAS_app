@@ -49,33 +49,43 @@ if (interactive()) {
       output$dataListNames <- renderPrint({
         names(dataList)
       })
-      
-      # Assign data to reactive variables based on file names
-      datasets$tblCountSurv <- dataList[[grep("tblCountSurv", files$name)]]
-      datasets$tblCountDetail <- dataList[[grep("tblCountDetail", files$name)]]
-      datasets$tblGeoLoc <- dataList[[grep("tblGeoLoc", files$name)]]
-      datasets$tbl2ndCountSurv <- dataList[[grep("tbl2ndCountSurv", files$name)]]
-      datasets$tbl2ndCountDetail <- dataList[[grep("tbl2ndCountDetail", files$name)]]
-      datasets$tblIvDetail <- dataList[[grep("tblIvDetail", files$name)]]
-      datasets$tblCatch <- dataList[[grep("tblCatch", files$name)]]
-      datasets$tblSpecies <- dataList[[grep("tblSpecies", files$name)]]
-      datasets$tblIvSurv <- dataList[[grep("tblIvSurv", files$name)]]
-      datasets$tblMethod <- dataList[[grep("tblMethod", files$name)]]
-      datasets$exp_lookup<- dataList[[grep("expansion_lookup", files$name)]]
-      datasets$edm_lookup<- dataList[[grep("auto_edm_lookup", files$name)]]
+
+      # Safely assign data to reactive variables based on file names
+      datasets$tblCountSurv <- if(length(grep("tblCountSurv", files$name)) > 0) dataList[[grep("tblCountSurv", files$name)]] else NULL
+      datasets$tblCountDetail <- if(length(grep("tblCountDetail", files$name)) > 0) dataList[[grep("tblCountDetail", files$name)]] else NULL
+      datasets$tblGeoLoc <- if(length(grep("tblGeoLoc", files$name)) > 0) dataList[[grep("tblGeoLoc", files$name)]] else NULL
+      datasets$tbl2ndCountSurv <- if(length(grep("tbl2ndCountSurv", files$name)) > 0) dataList[[grep("tbl2ndCountSurv", files$name)]] else NULL
+      datasets$tbl2ndCountDetail <- if(length(grep("tbl2ndCountDetail", files$name)) > 0) dataList[[grep("tbl2ndCountDetail", files$name)]] else NULL
+      datasets$tblIvDetail <- if(length(grep("tblIvDetail", files$name)) > 0) dataList[[grep("tblIvDetail", files$name)]] else NULL
+      datasets$tblCatch <- if(length(grep("tblCatch", files$name)) > 0) dataList[[grep("tblCatch", files$name)]] else NULL
+      datasets$tblSpecies <- if(length(grep("tblSpecies", files$name)) > 0) dataList[[grep("tblSpecies", files$name)]] else NULL
+      datasets$tblIvSurv <- if(length(grep("tblIvSurv", files$name)) > 0) dataList[[grep("tblIvSurv", files$name)]] else NULL
+      datasets$tblMethod <- if(length(grep("tblMethod", files$name)) > 0) dataList[[grep("tblMethod", files$name)]] else NULL
+      datasets$exp_lookup <- if(length(grep("expansion_lookup", files$name)) > 0) dataList[[grep("expansion_lookup", files$name)]] else NULL
+      datasets$edm_lookup <- if(length(grep("auto_edm_lookup", files$name)) > 0) dataList[[grep("auto_edm_lookup", files$name)]] else NULL
     })
     
     # Trigger the data cleaning script when the button is clicked
     observeEvent(input$cleanData, {
       # Ensure all datasets are available
-      if (is.null(datasets$tblCountSurv) || is.null(datasets$tblCountDetail) || is.null(datasets$tblGeoLoc) ||
-          is.null(datasets$tbl2ndCountSurv) || is.null(datasets$tbl2ndCountDetail) || is.null(datasets$tblIvDetail) ||
-          is.null(datasets$tblCatch) || is.null(datasets$tblSpecies) || is.null(datasets$tblIvSurv) || is.null(datasets$tblMethod) || is.null(datasets$exp_lookup) || is.null(datasets$edm_lookup)) {
-        showNotification("Some required datasets are missing.", type = "error")
+      dataset_names <- c("tblCountSurv", "tblCountDetail", "tblGeoLoc", "tbl2ndCountSurv", "tbl2ndCountDetail",
+                         "tblIvDetail", "tblCatch", "tblSpecies", "tblIvSurv", "tblMethod", "exp_lookup", "edm_lookup")
+      
+      # Check for missing datasets
+      missing_datasets <- lapply(dataset_names, function(name) {
+        if (is.null(datasets[[name]])) return(name) else return(NULL)
+      })
+      
+      # Filter out the NULL values (those that are not missing)
+      missing_datasets <- Filter(Negate(is.null), missing_datasets)
+      
+      # If any datasets are missing, show a notification and return
+      if (length(missing_datasets) > 0) {
+        showNotification(paste("The following datasets are missing:", paste(missing_datasets, collapse = ", ")), type = "error")
         return()
       }
       
-      # Source the cleaning script and run it using the datasets in the reactiveValues
+      # fill datasets in the reactiveValues
       tblCountSurv <- datasets$tblCountSurv
       tblCountDetail <- datasets$tblCountDetail
       tblGeoLoc <- datasets$tblGeoLoc
@@ -89,7 +99,7 @@ if (interactive()) {
       exp_lookup <- datasets$exp_lookup
       edm_lookup <- datasets$edm_lookup
       
-      # Display a progress bar during the data cleaning process
+      # Display a progress bar while running the sourced scripts
       withProgress(message = "Running data cleaning scripts...", value = 0, {
         # Increment progress for each script
         
