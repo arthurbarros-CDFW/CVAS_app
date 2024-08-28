@@ -1,7 +1,8 @@
 library(shiny)
+library(tidyverse)
+library(dplyr)
 
-if (interactive()) {
-  
+
   ui <- fluidPage(
     sidebarLayout(
       sidebarPanel(
@@ -143,4 +144,3 @@ if (interactive()) {
   }
   
   shinyApp(ui, server)
-}

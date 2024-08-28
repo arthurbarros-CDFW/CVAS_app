@@ -1,0 +1,12 @@
+name: CVAS_app
+title: CVAS_app
+username: arthurbarros-cdfw
+account: arthurbarros-cdfw
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12548273
+bundleId: 9036391
+url: https://arthurbarros-cdfw.shinyapps.io/CVAS_app/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
