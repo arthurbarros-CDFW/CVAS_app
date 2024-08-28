@@ -10,11 +10,13 @@ if (interactive()) {
         uiOutput("fileList"),  # Output for the list of uploaded files
         h4("Data List:"),
         verbatimTextOutput("dataListNames"),  # Output to display the names in dataList
-        actionButton("cleanData", "Run Data Cleaning")
+        actionButton("cleanData", "Build Monthly Stats"),
+        downloadButton("downloadData", "Download Monthly Stats")  # download button
       ),
       mainPanel(
         h4("Summary Output:"),
-        dataTableOutput("cleanedData")  # Output for cleaned data
+        dataTableOutput("cleanedData"),  # Output for cleaned data
+        
       )
     )
   )
@@ -127,6 +129,17 @@ if (interactive()) {
       req(cleanedData())
       cleanedData()
     })
+    
+    # Define download handler
+    output$downloadData <- downloadHandler(
+      filename = function() {
+        paste("CVAS_stats_", Sys.Date(), ".csv", sep = "")
+      },
+      content = function(file) {
+        # Save the cleaned data to a temporary file
+        write.csv(cleanedData(), file,row.names = FALSE)
+      }
+    )
   }
   
   shinyApp(ui, server)
