@@ -24,7 +24,7 @@ as a series of intermediate csv files and scripts that are provided for
 transparency. This process aims to automate the data cleaning, QC, and
 analysis of CVAS data reporting in order to save labor time.
 
-### Establishing the environment
+### *Establishing the environment*
 
 The first part of the script sets the environment for the R project by
 first clearing the environment with the `rm(list=ls())` call. We can

@@ -9,6 +9,10 @@ library(dplyr)
         fileInput("files", "Upload Data Files", accept = ".csv", multiple = TRUE),
         h5(strong("Tables that must be uploaded:")),
         h5("tblCountSurv, tblCountDetail, tblGeoLoc, tbl2ndCountSurv, tbl2ndCountDetail, tblIvDetail, tblCatch, tblSpecies, tblIvSurv, tblMethod, exp_lookup, edm_lookup"),
+        
+        dateInput("open_date","Open Date:"),
+        dateInput("close_date","Close Date:"),
+        
         uiOutput("fileList"),  # Output for the list of uploaded files
         h4("Data List:"),
         verbatimTextOutput("dataListNames"),  # Output to display the names in dataList
@@ -28,10 +32,18 @@ library(dplyr)
     
     # Reactive values to store uploaded files, assigned datasets, and cleaned data
     uploadedFiles <- reactiveVal(list())
-    datasets <- reactiveValues(tblCountSurv = NULL, tblCountDetail = NULL, tblGeoLoc = NULL,
-                               tbl2ndCountSurv = NULL, tbl2ndCountDetail = NULL, tblIvDetail = NULL,
-                               tblCatch = NULL, tblSpecies = NULL, tblIvSurv = NULL, tblMethod = NULL,
-                               exp_lookup = NULL, edm_lookup = NULL)
+    datasets <- reactiveValues(tblCountSurv = NULL, 
+                               tblCountDetail = NULL, 
+                               tblGeoLoc = NULL,
+                               tbl2ndCountSurv = NULL, 
+                               tbl2ndCountDetail = NULL, 
+                               tblIvDetail = NULL,
+                               tblCatch = NULL, 
+                               tblSpecies = NULL, 
+                               tblIvSurv = NULL, 
+                               tblMethod = NULL,
+                               exp_lookup = NULL, 
+                               edm_lookup = NULL)
     cleanedData <- reactiveVal(NULL)
     
     # Update the list of uploaded files
@@ -71,6 +83,7 @@ library(dplyr)
     
     # Trigger the data cleaning script when the button is clicked
     observeEvent(input$cleanData, {
+      
       # Ensure all datasets are available
       dataset_names <- c("tblCountSurv", "tblCountDetail", "tblGeoLoc", "tbl2ndCountSurv", "tbl2ndCountDetail",
                          "tblIvDetail", "tblCatch", "tblSpecies", "tblIvSurv", "tblMethod", "exp_lookup", "edm_lookup")
@@ -102,6 +115,9 @@ library(dplyr)
       tblMethod <- datasets$tblMethod
       exp_lookup <- datasets$exp_lookup
       edm_lookup <- datasets$edm_lookup
+      
+      open_date<-input$open_date
+      close_date<-input$close_date
       
       # Display a progress bar while running the sourced scripts
       withProgress(message = "Running data cleaning scripts...", value = 0, {

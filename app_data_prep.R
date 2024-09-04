@@ -7,8 +7,8 @@ library(dplyr)
 # (1) recreate first_count table for pasting
 #######################################################################
 
-open_date<-as.Date("2022-07-16")
-close_date<-as.Date("2022-12-31")
+#open_date<-as.Date("2022-07-16")
+#close_date<-as.Date("2022-12-31")
 
 first_counts<-tblCountSurv %>%
   left_join(tblCountDetail, by = "CountSurvId")%>%
