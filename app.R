@@ -2,12 +2,13 @@ library(shiny)
 library(tidyverse)
 library(dplyr)
 
-
   ui <- fluidPage(
     sidebarLayout(
       sidebarPanel(
         # File input for multiple files
         fileInput("files", "Upload Data Files", accept = ".csv", multiple = TRUE),
+        h5(strong("Tables that must be uploaded:")),
+        h5("tblCountSurv, tblCountDetail, tblGeoLoc, tbl2ndCountSurv, tbl2ndCountDetail, tblIvDetail, tblCatch, tblSpecies, tblIvSurv, tblMethod, exp_lookup, edm_lookup"),
         uiOutput("fileList"),  # Output for the list of uploaded files
         h4("Data List:"),
         verbatimTextOutput("dataListNames"),  # Output to display the names in dataList
