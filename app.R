@@ -6,7 +6,7 @@ library(dplyr)
     sidebarLayout(
       sidebarPanel(
         # File input for multiple files
-        fileInput("files", "Upload Data Files", accept = ".csv", multiple = TRUE),
+        fileInput("files", "Upload Data Files", accept = c(".csv"), multiple = TRUE),
         h5(strong("Tables that must be uploaded:")),
         h5("tblCountSurv, tblCountDetail, tblGeoLoc, tbl2ndCountSurv, tbl2ndCountDetail, tblIvDetail, tblCatch, tblSpecies, tblIvSurv, tblMethod, exp_lookup, edm_lookup"),
         
@@ -78,7 +78,7 @@ library(dplyr)
       datasets$tblIvSurv <- if(length(grep("tblIvSurv", files$name)) > 0) dataList[[grep("tblIvSurv", files$name)]] else NULL
       datasets$tblMethod <- if(length(grep("tblMethod", files$name)) > 0) dataList[[grep("tblMethod", files$name)]] else NULL
       datasets$exp_lookup <- if(length(grep("expansion_lookup", files$name)) > 0) dataList[[grep("expansion_lookup", files$name)]] else NULL
-      datasets$edm_lookup <- if(length(grep("auto_edm_lookup", files$name)) > 0) dataList[[grep("auto_edm_lookup", files$name)]] else NULL
+      datasets$edm_lookup <- if(length(grep("edm_lookup", files$name)) > 0) dataList[[grep("edm_lookup", files$name)]] else NULL
     })
     
     # Trigger the data cleaning script when the button is clicked

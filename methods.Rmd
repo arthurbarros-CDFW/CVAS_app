@@ -509,7 +509,7 @@ that row. With longer processes like this it's always good to measure
 how long it takes using the `Sys.time()` call. For the 2022
 first_counts_grouped data this took just over four minutes to run. Note
 that in the markdown document, this chunk has been set to `eval=F` to
-save time in document preperation.
+save time in document preparation.
 
 ```{r effort expansion_5,include=T,eval=F,message=FALSE,warning=FALSE,results='hide'}
 start<-Sys.time()

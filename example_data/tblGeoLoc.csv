@@ -1,0 +1,132 @@
+"GeoLocId","GeoLocName","GeoLocDE","GeoLocBasic","GeoLocPerfReport","Match_SO","LocSort","WixTable","SFRAId","SAC","RB","LocTypeId","Omykiss","RivId","RiverMileStart","RiverMileEnd","GeoLocDescription","GeoLocLength","StartLat","StartLon","EndLat","EndLon","CountyId","Active","OSPLC","Include","Tsoranos","Passes","RiverDivision","NewRecDate","NewRecClerk","LastUpdDate","LastUpdClerk","XXX_SecBase"
+2,"Section 1","1","1","1","1",1.00,1,1.00,-1,0,1,0,2,-22.00,12.00,"Carquinez Bridge (I-80) to Rio Vista Bridge (Hwy 12).",35.00,38.06,-122.22,38.15,-121.68,60,-1,,,1.00,2,"Lower Sac",12/27/2006 0:00:00,"tlinton",9/15/2015 9:23:02,"tlinton",1.00
+3,"Section 2","2","2","2","2",2.00,1,2.00,-1,0,1,0,2,13.00,59.00,"Rio Vista Bridge to mouth of American River.",48.00,38.15,-121.68,38.59,-121.50,34,-1,,,2.00,2,"Lower Sac",12/27/2006 0:00:00,"tlinton",9/15/2015 9:22:44,"tlinton",2.00
+4,"Section 3","3","3","3","3",3.00,1,3.00,-1,0,1,0,2,60.00,89.00,"American River to Knights Landing (Hwy. 113 Bridge).",29.00,38.59,-121.50,38.80,-121.72,60,-1,,,3.00,2,"Lower Sac",12/27/2006 0:00:00,"tlinton",9/15/2015 9:23:33,"tlinton",3.00
+5,"Section 4","4","4","4","4",4.00,1,4.00,-1,0,1,0,2,90.00,143.00,"Knights Landing to Steelhead Lodge.  Anything in this section or higher is considered ""Upper Sac"".",54.00,38.80,-121.72,39.21,-122.00,60,-1,,,4.00,2,"Lower Sac",12/27/2006 0:00:00,"tlinton",8/30/2016 8:57:05,"tlinton",4.00
+6,"Section 5","5","5","5","5",5.00,2,5.00,0,-1,1,0,2,144.00,199.00,"Steelhead Lodge to  Hwy. 32 Bridge (Hamilton City).",56.00,39.21,-121.72,39.75,-121.99,60,-1,,,5.00,2,"Upper Sac",12/27/2006 0:00:00,"tlinton",9/15/2015 9:24:03,"tlinton",5.00
+7,"Section 6","6","6","6","6",6.00,2,6.00,0,-1,1,0,2,200.00,242.00,"Hwy. 32 Bridge (Hamilton City) to Red Bluff Diversion Dam.",43.00,39.75,-121.99,40.15,-122.20,52,-1,,,6.00,2,"Upper Sac",12/27/2006 0:00:00,"tlinton",9/15/2015 9:24:29,"tlinton",6.00
+8,"Section 7","7","7","7","7",7.00,2,7.00,0,-1,1,0,2,243.00,275.00,"Red Bluff Diversion Dam to Balls Ferry Boat Ramp.
+As of 8/1/2014, excludes River Miles 270 and 271.",33.00,40.15,-122.20,40.41,-122.39,52,-1,,,7.00,2,"Upper Sac",12/27/2006 0:00:00,"tlinton",11/23/2015 9:26:32,"tlinton",7.00
+9,"Section 8","8","8","8","8",8.00,2,8.00,0,-1,1,0,2,276.00,298.00,"Balls Ferry (County Hwy A17 bridge) Boat Ramp to Anderson/Cottonwood Irrigation District (ACID) Dam.  Includes all other 8.x sections except 8.1.",22.00,40.41,-122.19,40.59,-122.39,45,-1,,,8.00,2,"Upper Sac",12/27/2006 0:00:00,"tlinton",9/15/2015 9:25:22,"tlinton",8.00
+10,"Section 9","9","9","9","9",9.00,3,9.00,-1,0,1,0,1,500.00,504.00,"Discovery Park to Interstate 80 Bridge.",4.00,38.60,-121.51,38.58,-121.44,34,-1,,,9.00,2,"American",12/27/2006 0:00:00,"tlinton",9/15/2015 9:26:25,"tlinton",9.00
+11,"Section 10","10","10","10","10",10.00,3,10.00,-1,0,1,-1,1,504.00,521.00,"I-80 Bridge to Sailor Bar peninsula point.",18.00,38.58,-121.44,38.63,-121.23,34,-1,,,10.00,1,"American",12/27/2006 0:00:00,"tlinton",1/2/2019 8:48:16,"ssimkins",10.00
+12,"Section 10.1","10.1","10.1","99","10.1",10.10,3,10.10,-1,0,1,-1,1,523.00,523.00,"Hazel Avenue Bridge to Nimbus Dam (aka: Nimbus Basin).",1.00,38.63,-121.22,38.63,-121.22,34,-1,"6FCSAAMN BASN",,10.10,2,"American",12/27/2006 0:00:00,"tlinton",3/15/2016 10:06:23,"tlinton",10.10
+14,"Section 12","12","12","12","12",12.00,4,12.00,0,-1,1,0,4,455.00,467.00,"Palm Avenue Riffle to Table Mountain Bicycle Bridge.",12.00,39.40,-121.62,39.51,-121.55,4,-1,,,12.00,1,"Feather",12/27/2006 0:00:00,"tlinton",9/15/2015 9:14:19,"tlinton",12.00
+15,"Section 12.1","12.1","12.1","12.1","12.1",12.10,4,12.10,0,-1,1,0,4,459.00,459.00,"Thermalito Afterbay Outlet (TAO).",1.00,39.45,-121.63,39.45,-121.63,4,-1,"6FCSAFEA THRM",,12.10,1,"Feather",12/27/2006 0:00:00,"tlinton",9/15/2015 9:14:14,"tlinton",12.10
+16,"Section 13","13","13","13","13",13.00,4,13.00,0,-1,1,0,5,600.00,612.00,"Confluence of the Feather and Yuba rivers, to Daguerre Point Dam.",13.00,39.12,-121.59,39.20,-121.44,58,-1,,,13.00,1,"Yuba",12/27/2006 0:00:00,"tlinton",9/15/2015 9:15:59,"tlinton",13.00
+17,"Section 14","14","14","14","14",14.00,4,14.00,0,-1,1,0,5,613.00,622.00,"Daguerre Point Dam to 1 mile upstream of Hwy 20 Bridge.",8.00,39.20,-121.44,39.23,-121.31,58,-1,,,14.00,1,"Yuba",12/27/2006 0:00:00,"tlinton",9/15/2015 9:16:02,"tlinton",14.00
+18,"Section 15","15","15","15","15",15.00,1,15.00,0,-1,1,0,3,700.00,757.00,"Mossdale Crossing to the confluence with the Sacramento River.",58.00,37.78,-121.30,38.06,-121.85,60,-1,,,,2,"San Joaquin",12/27/2006 0:00:00,"tlinton",9/15/2015 9:28:28,"tlinton",15.00
+19,"Section 16","16","16","16","16",16.00,1,16.00,-1,0,1,0,6,800.00,823.00,"South Fork - from mouth to the mouth of the Consumnes River..",23.00,38.09,-121.57,38.25,-121.44,39,-1,,,,2,"Mokelumne",12/27/2006 0:00:00,"tlinton",9/15/2015 9:17:44,"tlinton",16.00
+20,"Section 17","17","17","17","17",17.00,1,17.00,-1,0,1,0,6,900.00,910.00,"North Fk., from mouth to confl. with South Fk. at New Hope Landing.",11.00,38.13,-121.56,38.22,-121.49,39,-1,,,,2,"Mokelumne",12/27/2006 0:00:00,"tlinton",9/15/2015 9:18:04,"tlinton",17.00
+21,"Section 18","18","18","18","18",18.00,3,18.00,-1,0,1,0,7,1029.00,1058.00,"McHenry Avenue to Goodwin Dam.",29.00,37.76,-120.99,37.86,-120.63,5,-1,,,,2,"Stanislaus",12/27/2006 0:00:00,"tlinton",9/15/2015 9:29:57,"tlinton",18.00
+22,"Lindsey Slough","LISL","2","2",,99.00,1,2.00,-1,0,3,0,2,,,"Lindsey Slough.",0.00,,,,,,,,,,,"Lower Sac",3/28/2007 14:12:36,"tlinton",3/28/2007 14:12:36,"tlinton",
+23,"Cache Slough","CASL","2","2",,99.00,1,2.00,-1,0,3,0,2,,,"Cache Slough.",0.00,,,,,,,,,,,"Lower Sac",3/28/2007 14:16:35,"tlinton",3/28/2007 14:16:35,"tlinton",
+27,"Section 11.1","11.1","11.1","11.1","11.1",11.10,4,11.10,-1,0,1,0,4,400.00,424.00,"Verona to Shanghai Rapids.",24.00,38.78,-121.62,39.09,-121.59,51,-1,,,11.00,2,"Feather",9/13/2007 11:11:27,"tlinton",9/15/2015 9:28:06,"tlinton",11.00
+28,"Section 11.2","11.2","11.2","11.2","11.2",11.20,4,11.20,-1,0,1,0,4,424.00,438.00,"Shanghai Rapids to Sunset Pumps.",14.00,39.09,-121.59,39.24,-121.63,60,-1,,,11.00,2,"Feather",9/13/2007 11:13:48,"tlinton",9/15/2015 9:28:10,"tlinton",11.00
+29,"Discovery Park","DP","2","2",,64.00,1,2.00,-1,0,2,0,2,60.00,60.00,"Sacramento Conty Parks and Rec",0.00,38.60,-121.51,,,34,-1,"6FCSASBF DSPK",,,,"Lower Sac",12/27/2006 8:19:19,"tlinton",12/27/2006 8:19:19,"tlinton",
+30,"Rio Vista City Dock","RV","1","1",,80.00,1,1.00,-1,0,2,0,2,12.00,12.00,"Rio Vista Boat Ramp.",0.00,38.15,-121.69,,,48,-1,"6FCSASBF RIOV",,,,"Lower Sac",12/27/2006 8:20:10,"tlinton",12/27/2006 8:20:10,"tlinton",
+31,"Knight's Landing","KL","4","4",,67.00,2,4.00,-1,0,2,0,2,90.00,90.00,"Yolo County Parks and Rec, boat launch",0.00,38.80,-121.72,,,57,-1,"6FCSASAF KNLD",,,,"Upper Sac",12/27/2006 8:20:13,"tlinton",12/27/2006 8:20:13,"tlinton",
+32,"Thermalito Afterbay Outet","TAO","12.1","12.1",,82.00,4,12.10,0,-1,2,0,4,459.00,459.00,"Parking lot on bluff overlooking the river and outlet.  No facilities.",0.00,39.45,-121.63,,,4,-1,"6FCSAFEA THRM",,,,"Feather",12/27/2006 8:22:02,"tlinton",12/27/2006 8:22:02,"tlinton",
+33,"Colusa Access","COL","5","5",,62.00,2,5.00,-1,-1,2,0,2,144.00,144.00,"Colusa State Park, SRA",0.00,39.21,-122.01,,,6,-1,"6FCSASAF COLU",,,,"Upper Sac",1/16/2007 13:40:52,"tlinton",1/16/2007 13:40:52,"tlinton",
+34,"Ward's Landing","WL","4","4",,88.00,2,4.00,0,-1,2,0,2,138.00,138.00,"Private launch, 5 miles downstram from Colusa.
+Mailing Address:  2701 Butte Slough Road, Colusa, CA.
+Phone Number: (530) 696-2673.",0.00,39.19,-121.93,,,6,-1,,,,,"Upper Sac",1/17/2007 14:06:52,"tlinton",1/17/2007 14:06:52,"tlinton",
+35,"Nimbus Basin","NB","10.1","99",,96.00,3,10.10,-1,0,2,-1,1,523.00,523.00,,0.00,,,,,,0,"6FCSAAMN BASN",,,,"American",2/1/2007 7:50:27,,2/1/2007 7:50:27,"tlinton",
+37,"Nimbus Fish Hatchery","NFH","10","10",,97.00,3,10.00,-1,0,2,0,1,,,,0.00,,,,,34,0,"6FCSAAMN NBFH",,,,"American",2/1/2007 7:50:27,"tlinton",2/1/2007 7:50:27,"tlinton",
+38,"Bend Bridge","BB","7","7",,53.00,2,7.00,0,-1,2,-1,2,257.50,257.50,"Paved, with good-sized paved parking lot.  Southeast bank, East side of river.",0.00,40.26,-122.22,,,52,0,"6FCSABEN",,,,"Upper Sac",2/1/2007 7:50:27,"tlinton",2/1/2007 7:50:27,"tlinton",
+39,"Boyds Pump Ramp","BPR","11.1","11.1",,59.00,4,11.10,0,-1,2,0,4,,,"Paved, with paved parking.  West bank, West side of river.  Below Shanghai Rapids.",0.00,39.05,-121.61,39.05,-121.61,51,0,"6FCSAFEA BOYD",,,,"Feather",2/1/2007 7:50:27,"tlinton",2/1/2007 7:50:27,"tlinton",
+40,"Gridley","GRD","12.2","12.2",,65.00,4,12.20,0,-1,2,0,4,,,,0.00,,,,,,0,"6FCSAFEA GRID",,,,"Feather",2/1/2007 7:50:27,"tlinton",2/1/2007 7:50:27,"tlinton",
+41,"Anderson River Park Boat Launch","AP","8","8",,52.00,2,8.00,0,-1,2,-1,2,283.00,283.00,"Paved.  South bank, West side of river.
+Phone: (530) 378-6656.",0.00,40.46,-122.27,40.46,-122.27,45,-1,"6FCSASAF ANPK",,,,"Upper Sac",2/1/2007 7:50:27,"tlinton",2/1/2007 7:50:27,"tlinton",
+42,"Balls Ferry Boat Ramp","BF","8","8",,56.00,2,8.00,0,-1,2,-1,2,276.00,276.00,"Mailing Address:  355 Hemsted Drive, , CA. 
+Phone: (530) 224-2100.  East bank, East side of river.",0.00,40.41,-122.19,,,45,-1,"6FCSASAF BAFE",,,,"Upper Sac",2/1/2007 7:50:27,"tlinton",2/1/2007 7:50:27,"tlinton",
+43,"Lake Red Bluff RA","BRBD","7","7",,60.00,2,7.00,0,-1,2,-1,2,243.00,243.00,,0.00,40.15,-122.20,,,52,0,"6FCSASAF BLRB",,,,"Upper Sac",2/1/2007 7:50:27,"tlinton",2/1/2007 7:50:27,"tlinton",
+44,"Bonnyview Boat Ramp","BV","8","8",,61.00,2,8.00,0,-1,2,-1,2,292.00,292.00,"Paved.  South of, and next to, S. Bonnieview Bridge.  About 2-1/2 miles south of Redding (straight-line).",0.00,40.53,-122.35,,,45,-1,"6FCSASAF BONN",,,,"Upper Sac",2/1/2007 7:50:27,"tlinton",2/1/2007 7:50:27,"tlinton",
+45,"Butte City Launch Facility","BC","5","5",,54.00,2,5.00,0,-1,2,0,2,169.00,169.00,,0.00,39.46,-121.99,,,,0,"6FCSASAF BUTC",,,,"Upper Sac",2/1/2007 7:50:27,"tlinton",2/1/2007 7:50:27,"tlinton",
+46,"Hamilton City (Irvine Finch River Access)","HC","6","6",,66.00,2,6.00,0,-1,2,0,2,200.00,200.00,"The Irvine Finch Boating Access Area is located on the right (west) side of the river, near Highway 32, about a ½ mile east of Hamilton City.  The parking lot at Irvine Finch is located outside the levee.  Irvine Finch is a remnant walnut orchard.",0.00,39.75,-121.99,,,11,-1,"6FCSASAF HAMC",,,,"Upper Sac",2/1/2007 7:50:27,"tlinton",2/1/2007 7:50:27,"tlinton",
+47,"Los Molinos (Mill Creek)","LM","6","6",,68.00,2,6.00,0,-1,2,-1,2,229.50,229.50,"Mailing Address:  9380 San Benito Avenue, Gerber, CA.
+Phone Number: (530) 385-1462.",0.00,40.03,-122.11,,,52,-1,"6FCSASAF LOMO",,,,"Upper Sac",2/1/2007 7:50:27,"tlinton",2/1/2007 7:50:27,"tlinton",
+48,"Ord Bend","OB","5","5",,75.00,2,5.00,0,-1,2,0,2,184.00,184.00,"Mailing Address:  125 South Murdock Ave, Willows, CA.
+Phone Number: (530) 934-6540.",0.00,39.63,-121.99,,,11,-1,"6FCSASAF ORDB",,,,"Upper Sac",2/1/2007 7:50:27,"tlinton",2/1/2007 7:50:27,"tlinton",
+49,"Posse Grounds","PG","8","8",,76.00,,8.00,0,-1,2,-1,2,298.00,298.00,,0.00,40.59,-122.38,40.59,-122.38,,0,"6FCSASAF POSG",,,,,2/1/2007 7:50:27,,9/6/2016 13:06:30,"tlinton",
+50,"Red Bluff Diversion Dam","RBDD","6","6",,78.00,2,6.00,0,-1,2,-1,2,243.00,243.00,"Lake Red Bluff Recreation Area Boat Launch.
+Mailing Address:  P.O. Box 1019, Corning, CA.
+Phone Number: (530) 824-5196.",0.00,40.15,-122.19,,,52,-1,"6FCSASAF RBDD",,,,"Upper Sac",2/1/2007 7:50:27,"tlinton",2/1/2007 7:50:27,"tlinton",
+51,"Woodson Bridge","WB","6","6",,87.00,2,6.00,0,-1,2,-1,2,218.00,218.00,"Mailing Address:  25340 South Avenue, Corning, CA.
+Phone Number: (530) 839-2112.",0.00,39.90,-122.09,,,4,-1,"6FCSASAF WDBR",,,,"Upper Sac",2/1/2007 7:50:27,"tlinton",2/1/2007 7:50:27,"tlinton",
+52,"Verona","VER","3","3",,85.00,1,3.00,-1,0,2,0,2,79.00,79.00,"Private.
+6955 Garden Highway, Nicolaus, California.
+(916) 927-8387.",0.00,38.78,-121.61,,,51,-1,"6FCSASBF VERO",,,,"Lower Sac",2/1/2007 7:50:27,"tlinton",2/1/2007 7:50:27,"tlinton",
+53,"Barge Hole","BH","7","7",,57.00,2,7.00,0,-1,2,-1,2,271.00,,"River mile may not be accurate.  At the mouth of Battle Creek.  Not paved.  Southeast bank, East side of river.",0.00,40.34,-122.18,,,52,0,,,,,"Upper Sac",2/2/2007 9:08:14,"tlinton",2/2/2007 9:08:14,"tlinton",
+54,"Caldwell Park","CP","8","8",,63.00,2,8.00,0,-1,2,-1,2,298.50,298.50,"Paved, large lot.  North bank, East side of river. Between Market St. and Benton Dr. bridges in northern Redding.",0.00,40.59,-122.39,40.59,-122.39,45,-1,,,,,"Upper Sac",2/2/2007 9:09:04,"tlinton",2/2/2007 9:09:04,"tlinton",
+55,"Yuba City","YC","11.2","11.2",,91.00,4,11.20,-1,0,2,0,4,428.00,428.00,"Parkview Riverfront Trail and Park.",0.00,39.12,-121.60,,,51,-1,,,,,"Feather",9/4/2007 9:16:29,"tlinton",9/4/2007 9:16:29,"tlinton",
+56,"Marysville (Riverfront Park Boat Launch)","MV","2","2",,71.00,4,2.00,-1,0,2,0,4,428.00,428.00,"Mailing Address: 526 C St, P.O. Box 150, Marysville, CA.
+Phone Number:  (530) 749-3902.",0.00,39.13,-121.60,,,58,-1,,,,,"Feather",9/4/2007 9:16:42,"tlinton",9/4/2007 9:16:42,"tlinton",
+57,"Live Oak Riverfront Park","LO","12","12",,69.00,4,12.00,0,-1,2,0,4,442.00,,,0.00,39.27,-121.63,,,51,0,,,,,"Feather",9/4/2007 9:17:19,"tlinton",9/4/2007 9:17:19,"tlinton",
+59,"Scotty's Boat Landing","SL","5","5",,81.00,2,5.00,0,-1,2,0,2,196.00,196.00,"Mailing Address:  12609 River Rd, Chico, CA.
+Phone Number: (530) 893-2020.",0.00,39.73,-121.95,,,4,-1,,,,,"Upper Sac",10/30/2007 9:42:05,"tlinton",10/30/2007 9:42:05,"tlinton",
+60,"Broad Slough","BS","1","1",,99.00,1,1.00,-1,0,3,0,2,,,"South from Chain Island to Kimball Island.",0.00,,,,,,,,,,,"Lower Sac",12/6/2007 9:33:01,"tlinton",12/6/2007 9:33:01,"tlinton",
+61,"Miner Slough","MSL","2","2",,99.00,1,2.00,-1,0,3,0,2,,,,0.00,,,,,,,,,,,"Lower Sac",12/11/2007 11:07:37,"tlinton",12/11/2007 11:07:37,"tlinton",
+62,"Sacramento Deep Water Channel","SDWC","2","2",,99.00,1,2.00,-1,0,3,0,2,,,,0.00,,,,,,,,,,,"Lower Sac",12/11/2007 11:11:42,"tlinton",8/17/2016 12:27:33,"tlinton",
+68,"Section 19","19","19","19","19",19.00,1,19.00,-1,0,1,-1,6,1958.00,1963.50,"N. Mackville Road crossing to Comanche Dam.",4.50,38.20,-121.09,38.22,-121.02,39,-1,,,,1,"Mokelumne",1/8/2008 13:36:12,"tlinton",9/15/2015 9:19:39,"tlinton",19.00
+69,"Section 20","20","20","20","20",20.00,4,20.00,-1,0,1,-1,11,2043.00,2044.00,"1 mi. downstream of New Hogan Dam to New Hogan Dam (upper Cal.).",1.00,38.14,-120.83,38.15,-120.81,5,-1,,,,1,"Calaveras",1/8/2008 13:40:10,"tlinton",9/15/2015 9:19:46,"tlinton",20.00
+70,"Arlin Blvd","AB","12","12",,51.00,4,12.00,0,-1,2,-1,4,466.00,466.00,"Overlook and parking lot (no ramp).  Used for interviewing shore anglers.  Actually Arline Rhine Drive.  South-southeast bank, East side of river.",0.00,39.51,-121.55,,,4,-1,,,,,"Feather",1/31/2008 11:37:54,"tlinton",1/31/2008 11:37:54,"tlinton",
+71,"Elkhorn Slough","ESL","2","2",,99.00,1,2.00,-1,0,3,0,2,,,,0.00,,,,,,,,,,,"Lower Sac",1/31/2008 13:59:51,"tlinton",1/31/2008 13:59:51,"tlinton",
+72,"Steamboat Slough","SBSL","2","2",,99.00,1,2.00,-1,0,3,0,2,,,"Once a shortcut for steamboats going between Sacramento and San Francisco.",0.00,,,,,,,,,,,"Lower Sac",1/31/2008 14:01:51,"tlinton",8/17/2016 9:17:05,"tlinton",
+73,"Georgiana Slough Fishing Access","GSL","16","16",,99.00,1,2.00,-1,0,3,0,2,,,"Georgiana Slough was once a steamboat route.",0.00,,,,,,,,,,,"Lower Sac",1/31/2008 14:02:18,"tlinton",8/17/2016 11:22:02,"tlinton",
+74,"Decker Island","DI","1","1",,86.00,1,1.00,-1,0,3,0,2,,,,0.00,,,,,,,,,,,"Lower Sac",1/31/2008 14:02:53,"tlinton",1/31/2008 14:02:53,"tlinton",
+75,"Sherman Lake","SLK","1","1",,99.00,1,1.00,-1,0,3,0,2,,,,0.00,,,,,,,,,,,"Lower Sac",1/31/2008 14:03:14,"tlinton",1/31/2008 14:03:14,"tlinton",
+76,"Three-Mile Slough","TMSL","1","1",,99.00,1,1.00,-1,0,3,0,2,,,,0.00,,,,,,,,,,,"Lower Sac",1/31/2008 14:04:37,"tlinton",1/31/2008 14:04:37,"tlinton",
+77,"Montezuma Slough","MZSL","1","1",,99.00,1,1.00,-1,0,3,0,2,,,,0.00,,,,,,,,,,,"Lower Sac",1/31/2008 14:05:18,"tlinton",1/31/2008 14:05:18,"tlinton",
+78,"Big Break","BBK","15","15",,82.00,1,1.00,-1,0,3,0,2,,,"Paved, with paved lot.  South bank, South side of river.  About a mile East of the Antioch Bridge.",0.00,38.01,-121.73,,,,,,,,,"Lower Sac",1/31/2008 14:05:47,"tlinton",8/17/2016 11:20:49,"tlinton",
+79,"Sevenmile Slough","SMSL","15","15",,99.00,1,1.00,-1,0,3,0,2,,,,0.00,,,,,,,,,,,"Lower Sac",1/31/2008 14:06:31,"tlinton",8/17/2016 11:22:28,"tlinton",
+80,"Sutter Slough","SSL","2","2",,99.00,1,2.00,-1,0,3,0,2,,,,0.00,,,,,,,,,,,"Lower Sac",1/31/2008 14:22:03,"tlinton",1/31/2008 14:22:03,"tlinton",
+81,"Section 12.2","12.2","12.2","12.2","12.2",12.20,4,12.20,0,-1,1,0,4,439.00,455.00,"Sunset Pumps to Palm Avenue Riffle.",16.00,39.24,-121.63,39.40,-121.62,4,-1,,,12.00,2,"Feather",2/7/2008 12:14:26,"tlinton",9/15/2015 9:14:24,"tlinton",12.00
+82,"Monte Vista Fishing Access","MVFA","20","20",,72.00,,20.00,-1,0,2,-1,11,2044.00,2044.00,,0.00,38.14,-120.82,,,31,-1,,,,,"Calaveras",2/15/2008 9:34:24,"tlinton",2/15/2008 9:34:24,"tlinton",
+84,"Liberty Island","LI","2","2",,91.00,1,2.00,-1,0,3,0,2,19.00,,,0.00,38.24,-121.68,,,,,,,,,"Lower Sac",4/18/2008 13:17:25,"tlinton",4/18/2008 13:17:25,"tlinton",
+85,"Prospect Island","PI","2","2",,98.00,1,2.00,-1,0,3,0,2,,,,,,,,,,,,,,,"Lower Sac",4/24/2008 13:52:56,"tlinton",4/24/2008 13:52:56,"tlinton",
+86,"Section 1.1","1.1","1.1","1.1","1.1",1.10,1,1.10,-1,0,1,0,2,-110.00,-100.00,"Suisun Bay, Suisun Cut off to Middle Grounds",11.00,38.03,122.06,38.03,121.57,60,-1,,,1.00,2,"Lower Sac",5/13/2008 15:22:51,"tlinton",9/15/2015 9:26:37,"tlinton",1.00
+87,"Section 8.1","8.1","8","8","8.1",8.10,2,8.00,0,-1,1,0,2,298.50,302.00,"Anderson/Cottonwood Irrig. Dist. (ACID) Dam to Keswick Dam",,,,,,45,-1,,,8.00,2,"Upper Sac",9/25/2008 9:28:17,"tlinton",9/15/2015 9:25:25,"tlinton",8.00
+88,"Section 8.2","8.2","8","8","8.2",8.20,2,8.00,0,-1,1,0,2,292.00,298.50,"Bonneyview Boat Ramp to Anderson/Cottonwood Irrig. Dist. (ACID) Dam.
+Was used only during rebuilding/expansion of Redding area bridges.",,,,,,45,0,,,8.00,1,"Upper Sac",9/25/2008 9:47:26,"tlinton",9/15/2015 9:25:29,"tlinton",8.00
+89,"Section 8.4","8.4","8","8","8.4",8.40,2,8.00,0,-1,1,0,2,276.00,292.00,"Balls Ferry (County Hwy A17 bridge) to Bonneyview Boat Ramp.
+Was used only during rebuilding/expansion of Redding area bridges.",,,,,,45,0,,,8.00,1,"Upper Sac",9/25/2008 9:50:44,"tlinton",9/15/2015 9:25:32,"tlinton",8.00
+92,"Shag Slough","SHL","2","2",,99.00,1,2.00,-1,0,3,0,2,,,,,,,,,,,,,,,"Lower Sac",2/19/2009 11:51:44,"tlinton",2/19/2009 11:51:44,"tlinton",
+94,"Princeton Boat Launch","PR","5","5",,77.00,2,5.00,0,-1,2,0,2,163.20,163.20,"Dirt ramp",0.00,39.39,-122.00,,,6,-1,,,,,"Upper Sac",5/15/2009 9:45:44,"tlinton",5/15/2009 9:45:44,"tlinton",
+95,"Road 48","RD48","5","5",,79.00,2,5.00,0,-1,2,0,2,175.00,,"Access Interview location for shore anglers leaving the river.
+James Lyons: ""Road 48 is a private access area that is essentially a gravel bar that is at the end of Road 48 in Glenn county.  A land owner sells keys to the gate that allows the public…""",0.00,39.53,-121.99,,,11,-1,,,,,"Upper Sac",6/18/2009 6:29:05,"tlinton",6/18/2009 6:29:05,"tlinton",
+105,"Vance Ave","VA","12","12",,83.00,4,12.00,0,-1,2,0,4,,,"Associated with Section 12.
+Source:  eMail from Mike Brown on 8/19/2010.",,,,,,,-1,,,,,"Feather",8/23/2010 6:13:33,"tlinton",8/23/2010 6:13:33,"tlinton",
+106,"Boyd's Pump Boat Launch","BP","11.1","11.1",,58.00,4,11.10,-1,0,2,0,4,,,"Sutter County, free, capacity about 80 trucks and trailers",,,,,,51,-1,,,,2,"Feather",4/14/2011 14:07:22,"MBrown",4/14/2011 14:07:22,"tlinton",
+107,"Section 8.5","8.5","8","8","8.5",8.50,2,8.00,0,-1,1,0,2,276.00,281.00,"From Deschutes road bridge to Balls Ferry (County Hwy A17 bridge). This section is only used in months where this section of river is open to salmon fishing.",,,,,,45,-1,,,8.00,2,"Upper Sac",7/27/2011 14:19:46,"tlinton",9/15/2015 9:25:35,"tlinton",8.00
+109,"Vieira's Resort","VR","2","2",,86.00,1,2.00,-1,0,2,0,2,15.00,15.00,"Private resort.",0.00,38.17,-121.64,,,,-1,,,,2,"Lower Sac",8/13/2012 11:28:16,"mbrown",8/13/2012 11:28:16,"tlinton",
+110,"Benicia SRA","BEN","1","1",,55.00,1,1.00,-1,0,2,0,2,-20.00,-20.00,"Benicia State Recreation Area.  Benicia Marina is nearby.",0.00,38.06,-122193118.00,-122.19,,48,-1,,,,2,"Lower Sac",8/13/2012 11:32:36,"mbrown",8/13/2012 11:32:36,"tlinton",
+112,"New Hope Landing-Wimpy's Marina","NHW","16","16",,74.00,1,16.00,-1,0,2,0,6,,,"Two private ramps, side-by-side.
+New Hope Landing:  13945 West Walnut Grove Road, Thornton, CA 95686 
+Wimpy's Marina:  14001 West Walnut Grove Road, Walnut Grove, CA 95690",0.00,,,,,39,-1,,,,2,"Lower Sac",9/10/2012 12:52:23,"tlinton",9/10/2012 12:52:23,"tlinton",
+113,"New Hope Landing","NHL","16","16",,73.00,1,16.00,-1,0,2,0,6,,,"13945 West Walnut Grove Road, Thornton, CA 95686",0.00,,,,,39,-1,,,,2,"Lower Sac",9/11/2012 10:22:24,"tlinton",9/11/2012 10:22:24,"tlinton",
+114,"Wimpy's Marina","WMP","16","16",,89.00,1,16.00,-1,0,2,0,6,,,"14001 West Walnut Grove Road, Walnut Grove, CA 95690",0.00,,,,,39,-1,,,,2,"Lower Sac",9/11/2012 10:25:15,"tlinton",9/11/2012 10:25:15,"tlinton",
+115,"Snodgrass Slough","SNGSL","17","17",,99.00,1,2.00,-1,0,3,0,2,,,,,,,,,,-1,,,,2,"Lower Sac",10/16/2012 12:38:12,"tlinton",8/17/2016 11:22:41,"tlinton",
+116,"Lost Slough","LST","16","16",,99.00,1,16.00,-1,0,3,0,6,,,,,,,,,,-1,,,,2,"Lower Sac",10/23/2012 10:58:45,"tlinton",10/23/2012 10:58:45,"tlinton",
+117,"Beaver Slough","BEAV","16","16.1","BEAV",70.00,1,16.00,-1,0,1,0,6,,,"Associated with NHL and WMP.",,38.19,-121.47,,,,-1,,,,2,"Mokelumne",10/23/2012 11:04:46,"tlinton",10/23/2012 11:04:46,"tlinton",
+118,"Hog Slough","HSL","16","16.2","HSL",80.00,1,16.00,-1,0,1,0,6,,,"Associated with NHL and WMP.",,38.16,-121.48,,,,-1,,,,2,"Mokelumne",11/13/2012 6:52:55,"tlinton",11/13/2012 6:52:55,"tlinton",
+119,"Sycamore Slough","SYCSL","16","16.3","SYCSL",90.00,1,16.00,-1,0,1,0,6,,,"Associated with NHL and WMP.",0.00,38.14,-121.49,,,,-1,,,,2,"Mokelumne",5/29/2013 6:27:14,"tlinton",5/29/2013 6:27:14,"tlinton",
+120,"Cosumnes River","COS","16","16",,80.00,1,16.00,0,0,3,0,10,,,,,,,,,,-1,,,,2,"Lower Sac",6/17/2013 9:42:25,"tlinton",6/17/2013 9:42:25,"tlinton",
+121,"Garcia Bend Park","GB","2","2",,64.00,1,2.00,-1,0,2,0,2,49.00,49.00,,0.00,38.47,-121.54,,,34,-1,,,,2,"Lower Sac",8/15/2013 12:40:52,"tlinton",8/15/2013 12:40:52,"tlinton",
+122,"Sacramento Slough","SACSL","3","3",,99.00,1,3.00,-1,0,3,0,2,80.50,,"Muddy runoff  from rice farms along the Sutter Bypass.",,38.78,-121.63,,,51,-1,,,,2,"Lower Sac",9/17/2013 7:45:38,"tlinton",9/17/2013 7:45:38,"tlinton",
+123,"Section 7.1","7.1","7","7","7.1",7.10,2,7.00,0,-1,1,0,2,270.00,271.00,"Barge Hole.",2.00,40.34,-122.19,40.34,-122.18,52,-1,,,0.00,1,"Upper Sac",8/6/2014 13:11:45,"tlinton",11/23/2015 9:26:41,"tlinton",
+124,"Tisdale Boat Ramp","TIS","4","4",,99.00,2,4.00,-1,0,2,0,2,118.00,118.00,,1.00,,,,,,-1,,,0.00,1,"Upper Sac",8/13/2014 13:06:58,"tlinton",8/13/2014 13:06:58,"tlinton",
+125,"Potato Slough","POT","16","16",,65.00,1,16.00,-1,0,3,0,2,,,,,,,,,,-1,,,0.00,2,"Lower Sac",11/25/2014 12:00:53,"tlinton",11/25/2014 12:00:53,"tlinton",
+126,"Section 1.2","1.2","1","1.2","1.2",1.20,1,1.00,-1,0,1,0,2,-19.00,-20.00,"Benicia only.",2.00,,,,,60,-1,,,0.00,2,"Lower Sac",1/21/2015 10:32:52,"tlinton",3/15/2016 12:27:33,"tlinton",
+127,"Star Bend","STB","11.1","11.1",,99.00,4,11.10,-1,0,2,0,4,418.00,418.00,,0.00,39.01,-121.58,,,58,-1,,,0.00,1,"Feather",4/20/2015 7:48:35,"tlinton",4/20/2015 7:48:35,"tlinton",
+128,"River Road","RR","5","5",,99.00,,5.00,-1,0,2,0,2,193.00,193.00,"Between Scotty's and the Washout in section 5, shore angler spot",1.00,,,,,,-1,,,0.00,2,,8/4/2015 11:08:08,"ecollins",8/4/2015 11:08:08,"ecollins",
+129,"Section 7.1 Shore","7.1S","7","7","7.1",7.12,2,7.00,0,-1,1,0,2,270.00,271.50,"7.1 shore.",1.00,40.34,-122.18,40.35,-122.17,52,-1,,,0.00,2,"Upper Sac",9/9/2015 10:01:34,"tlinton",12/16/2015 7:24:21,"tlinton",
+130,"Section 7.1 Boat","7.1B","7","7","7.1",7.11,2,7.00,0,-1,1,0,2,270.50,271.50,"7.1 Boat.",1.00,40.34,-122.18,40.35,-122.17,52,-1,,,0.00,2,"Upper Sac",9/9/2015 10:04:11,"tlinton",12/9/2015 7:47:39,"tlinton",
+131,"Section 12.0U","12.0U","12","12","12",12.02,4,12.00,0,-1,1,0,4,459.00,465.50,"Hwy 70 Bridge to Palm Ave.",6.50,39.51,-121.57,39.45,-121.63,4,-1,,,0.00,1,"Feather",9/9/2015 10:05:21,"tlinton",11/23/2015 9:28:25,"tlinton",
+132,"Section 12.2D","12.2D","12","12","12.2",12.21,4,12.00,0,-1,1,0,4,441.50,455.00,"Drift section from Palm Ave. to Live Oak.",13.50,39.40,,,,4,-1,,,0.00,1,"Feather",9/9/2015 11:49:22,"tlinton",11/23/2015 9:26:12,"tlinton",
+133,"Section 12.0D","12.0D","12","12","12",12.01,4,12.00,0,-1,1,0,4,459.00,455.00,"Added 9/9/2015 at the request of James Lyons.",4.00,39.45,-121.63,39.40,-121.55,4,-1,,,0.00,2,"Feather",9/9/2015 12:06:25,"tlinton",9/15/2015 9:14:20,"tlinton",
+135,"Section 10.2","10.2","10.2","10.2","10.2",10.20,3,10.20,-1,0,1,-1,1,522.00,522.00,"Sailor Bar peninsula point to American River Hatchery cable corssing.",3.00,,,,,34,-1,,,0.00,2,"American",2/13/2017 14:56:24,"eferguson",12/18/2018 10:21:03,"ssimkins",
+136,"Miller Park","MP","2",,,0.00,,,,,2,0,2,57.00,57.00,,1.00,,,,,,-1,,,0.00,2,,9/12/2018 10:26:10,"tlinton",9/12/2018 10:27:15,"tlinton",
+137,"Sailor Bar","SB","10.2",,,0.00,,,,,2,0,1,522.00,522.00,"American River at Sailor Bar county park (North side of RM 522)",1.00,,,,,34,-1,,,0.00,2,,10/31/2018 13:42:36,"ssimkins",10/31/2018 13:44:03,"ssimkins",
+138,"American River Hatchery","ARH","10.2","10.2",,0.00,,,,,2,0,1,522.00,522.00,"Access for section 10.2 at American River hatchery (South side of RM522)",1.00,,,,,34,-1,,,0.00,2,,10/31/2018 13:44:07,"ssimkins",10/31/2018 13:45:26,"ssimkins",
+139,"First Street","FST","1.2","1.2",,0.00,,,,,2,0,2,-19.00,-20.00,"First street fishing access in downtown Benicia",2.00,,,,,,-1,,,0.00,2,,12/28/2018 10:17:50,"ssimkins",12/28/2018 10:19:00,"ssimkins",

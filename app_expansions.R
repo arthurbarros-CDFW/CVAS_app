@@ -25,8 +25,6 @@ first_counts$start_hour<-as.numeric(format(as.POSIXct(first_counts$Start,format=
 first_counts$finish_hour<-as.numeric(format(as.POSIXct(first_counts$Finish,format="%H:%M"),format='%H'))
 first_counts$month<-format(as.Date(first_counts$SurveyDate, format="%Y-%m-%d"),"%B")
 
-
-
 #group_by edm site grouping, month and date and sum anglers
 first_counts_grouped<-first_counts%>%
   group_by(month,SurveyDate,start_hour,finish_hour,Day_Type,EDM_code,section)%>%
