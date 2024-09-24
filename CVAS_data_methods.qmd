@@ -94,8 +94,8 @@ Once the process is complete, you'll be able to view the table on the
 page, as well as use the "Download Monthly Stats" button to download a
 .csv file of the monthly stats output.
 
-![Screenshot of the CVAS_app with finished summary
-output.](markdown_pics/app_pic2.png){alt="Screenshot of the CVAS_app with data loaded."}
+![Screenshot of the CVAS_app with data
+loaded.](markdown_pics/app_pic2.png)
 
 ## *Behind the RShiny CVAS_app*
 
@@ -515,7 +515,7 @@ angling hours for all species:
 
 $$
 \hat{E}=\frac{n}{P}
-$$
+$$ {#eq-effort}
 
 Where $n$ is the roving angler count (`Total_Anglers`) and $P$ is the
 `expansion_factor` based on the EDM look-up table.
@@ -551,8 +551,7 @@ second_expansions$count<-'Second'
 ```
 
 Now that our expansions are done for the second count, we can bind the
-expansions together into one data set and see what our final output
-looks like.
+expansions together into one data set.
 
 ```{r effort expansion_7,eval=FALSE}
 count_expansions<-first_expansions%>%
@@ -574,4 +573,150 @@ estimates for each survey section, month, and survey count type ('First'
 or 'Multiple'). This is done by running the 'summary.R' script, which is
 walked through below.
 
-### Calculating number of each day type for each month
+Before the script really begins, we set the target species to 11 to
+match the species numeric code for Chinook Salmon.
+
+```{r summary_1,eval=FALSE}
+tgt_species<-c(11) #here set target species number
+```
+
+#### Calculating number of each day type for each month
+
+For use throughout our summary data calculation we will need a data set
+that contains the number of each day type (weekend vs weekdays) in each
+month of our survey period. The following chunk of code does that
+calculation for us based on our open and close dates, set by the user in
+the app, and gives us the output 'survey_daytypes'.
+
+```{r summary_2, eval=FALSE}
+sum(!weekdays(seq(open_date, close_date, "days")) %in% c("Saturday", "Sunday"))
+survey_days<-data.frame(month=months(seq(open_date, close_date, "days")),day=seq(open_date, close_date, "days"))
+survey_days$Day_Type<-ifelse(!weekdays(survey_days$day) %in% c("Saturday", "Sunday"),'WD','WE')
+survey_daytypes<-survey_days%>%
+  group_by(month,Day_Type)%>%
+  dplyr::summarise(day_tally=n())
+```
+
+#### Estimating Chinook Salmon effort
+
+The next step is to use our expansions factors and estimate the total
+amount of angler effort targeting Chinook Salmon for each month,
+section, day type, and count type.
+
+First we join our count_expansions table to the ratio data to create the
+`avg_dt_effort` table.
+
+```{r summary_3, eval=FALSE}
+avg_dt_effort<-count_expansions%>%
+  left_join(select(ratio,-Day_Type))
+```
+
+Next we need to deal with sections that have opening days, which are
+tracked separately because of the high disproportionate effort they
+experience. Sections with opening days are 5, 6, and 7.1B and 7.1S. Here
+the code runner will also have to set the opening dates manually each
+year in the 'opening_dates' value. For sections with opening dates, we
+change their section code by pasting 'opener' to the end of it. We then
+rejoin everything back to the `avg_dt_efforts`, and now have separate
+records marked for sections on their opening dates.
+
+```{r summary_4, eval=FALSE}
+#deal with opening days
+opener_sections<-c('5','6','7.1B','7.1S')
+opening_dates<-c(as.Date('2022-07-16'),as.Date('2022-07-16'),as.Date('2022-08-01'),as.Date('2022-08-01'))
+opening_df<-data.frame(section=opener_sections,SurveyDate=opening_dates)
+
+openers_efforts<-avg_dt_effort%>%
+  inner_join(opening_df)
+openers_efforts$section<-paste(openers_efforts$section,'opener')
+
+avg_dt_effort<-avg_dt_effort%>%
+  anti_join(opening_df)
+avg_dt_effort<-avg_dt_effort%>%rbind(openers_efforts)
+
+avg_dt_effort<-avg_dt_effort%>%
+  left_join(survey_daytypes)
+```
+
+Again, having separate opening days that need to be reported adds some
+complications, so next we need to change the `day_tally` field we
+calculated earlier for sections with opening days, which is done below.
+
+```{r summary_5, eval=FALSE}
+#fix opening day tallys
+avg_dt_effort$day_tally<-ifelse(avg_dt_effort$section%in%c('5','6') & avg_dt_effort$month=='July' & avg_dt_effort$Day_Type=='WE',avg_dt_effort$day_tally-1,avg_dt_effort$day_tally)
+
+avg_dt_effort$day_tally<-ifelse(avg_dt_effort$section%in%c('7.1S','7.1B') & avg_dt_effort$month=='August' & avg_dt_effort$Day_Type=='WD',avg_dt_effort$day_tally-1,avg_dt_effort$day_tally)
+
+avg_dt_effort$day_tally<-ifelse(avg_dt_effort$section%in%c('7.1S opener','7.1B opener','5 opener','6 opener'),1,avg_dt_effort$day_tally)
+```
+
+Our ending data frame here is again `avg_dt_effort`. Each record here
+represents each survey, and includes the total number of anglers, the
+expansions factor, angler effort, total effort, total effort targeting
+Chinook, the ratio of effort targeting Chinook, and the tally of day
+types in that monthly survey period for that section.
+
+Next we can take the `avg_dt_effort` data frame and calculate the total
+amount of effort targeting Chinook for each section, month, and survey
+count type ('first' vs 'second'). This can be represented by the
+equation:
+
+$$
+\hat{E}_{Chinook}=\hat{E}*P_{Chinook}
+$$ {#eq-chinook_effort}
+
+We need to do it twice, once for the first counts, and then once for
+multiple counts, which needs to include all records for both 'first' and
+'second' type counts. We'll start by filtering the `avg_dt_effort` data
+frame for 'first' counts, then calculate the effort targeting Chinook.
+Then we group by month, section, and day type to calculate the average
+Chinook effort. Finally we expand our effort estimate by the number of
+days of that type, whether weekend or weekdays.
+
+```{r summary_6, eval=FALSE}
+#first_count
+first_effort<-avg_dt_effort%>%
+  filter(count=='First')
+first_effort$cs_effort<-first_effort$ratio_cs*first_effort$angler_effort
+first_effort$cs_effort[is.na(first_effort$cs_effort)]<-0
+
+first_effort<-first_effort%>%
+  group_by(month,section,Day_Type,count,day_tally)%>%
+  summarise(avg_cs_effort=mean(cs_effort))
+
+first_effort$effort_expanded<-first_effort$avg_cs_effort*first_effort$day_tally
+```
+
+Next we calculate the 'multiple' count effort targeting Chinook, by
+including survey data from both the first and second counts.
+
+```{r summary_7, eval=FALSE}
+#multi_count
+multi_effort<-avg_dt_effort
+multi_effort$cs_effort<-multi_effort$ratio_cs*multi_effort$angler_effort
+multi_effort$cs_effort[is.na(multi_effort$cs_effort)]<-0
+
+multi_effort<-multi_effort%>%
+  group_by(month,SurveyDate,section,Day_Type,day_tally)%>%
+  summarise(avg_cs_effort=mean(cs_effort))
+
+multi_effort<-multi_effort%>%
+  group_by(month,section,Day_Type,day_tally)%>%
+  summarise(avg_cs_effort=mean(avg_cs_effort))
+
+multi_effort$effort_expanded<-multi_effort$avg_cs_effort*multi_effort$day_tally
+multi_effort$count<-'Multiple'
+```
+
+Finally we join the `multi_effort` and `first_effort` data sets together
+as an `expanded_efforts` data set containing the average effort
+targeting Chinook for each section, count type, day type, and month.
+
+```{r summary_8, eval=FALSE}
+expanded_efforts<-first_effort%>%rbind(multi_effort)
+```
+
+Before we stop looking at effort, we also need two more data sets for
+our estimates, the average effort targeting Chinook for both count
+types, averaged for daily and monthly summaries.
