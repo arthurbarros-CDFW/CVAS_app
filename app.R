@@ -139,6 +139,11 @@ library(dplyr)
       # Assuming the cleaning script saves results as RDS files,
       # you could load one of those files and display it in the UI
       cleaned <- (readRDS("outputs/monthly_stats.rds"))
+      
+      cleaned <- cleaned %>%
+        mutate(month = factor(month, levels = month.name)) %>%  # Ensure months are ordered
+        arrange(month)
+      
       cleanedData(cleaned)
     })
     

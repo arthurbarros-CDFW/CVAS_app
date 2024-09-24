@@ -147,6 +147,4 @@ monthly_summary<-dplyr::select(monthly_stats,year,month,section,count,
 ###outputting
 ########################################################
 
-monthly_summary$month<-ordered(monthly_summary$month,levels=month)
-
 saveRDS(monthly_summary,'outputs/monthly_stats.rds')
