@@ -13,8 +13,12 @@ avg_dt_effort<-count_expansions%>%
   left_join(select(ratio,-Day_Type))
 
 #deal with opening days
+selected_year<-format(open_date,"%Y")
 opener_sections<-c('5','6','7.1B','7.1S')
-opening_dates<-c(as.Date('2022-07-16'),as.Date('2022-07-16'),as.Date('2022-08-01'),as.Date('2022-08-01'))
+opening_dates<-c(as.Date(paste(selected_year,'07-16',sep='-')),
+                 as.Date(paste(selected_year,'07-16',sep='-')),
+                 as.Date(paste(selected_year,'08-01',sep='-')),
+                 as.Date(paste(selected_year,'08-01',sep='-')))
 opening_df<-data.frame(section=opener_sections,SurveyDate=opening_dates)
 
 openers_efforts<-avg_dt_effort%>%
@@ -82,7 +86,9 @@ target_method<-c('Boat','Guided boat party')
 
 roving_prep<-roving%>%
   mutate(MethodName=ifelse(MethodName%in%target_method,'B','S'))
-roving_prep$section<-ifelse(roving_prep$section %in%target_sections,paste(roving_prep$section,roving_prep$Method,sep=''),roving_prep$section)
+roving_prep$section<-ifelse(roving_prep$section %in%target_sections,
+                            paste(roving_prep$section,
+                                  roving_prep$Method,sep=''),roving_prep$section)
 
 hours_targeting_CS<-unique(select(roving_prep,section,SurveyDate,Day_Type,tgtSpecies,Page,IvLine,TotalHours))%>%
   filter(tgtSpecies%in%tgt_species)%>%
@@ -105,8 +111,6 @@ daily_cpue<-unique(select(ungroup(count_expansions),SurveyDate,section,Day_Type)
   left_join(daily_cpue)
 daily_cpue[is.na(daily_cpue)] <- 0
 
-opener_sections<-c('5','6','7.1B','7.1S')
-opening_dates<-c(as.Date('2022-07-16'),as.Date('2022-07-16'),as.Date('2022-08-01'),as.Date('2022-08-01'))
 opening_df<-data.frame(section=opener_sections,SurveyDate=opening_dates)
 
 openers_cpue<-daily_cpue%>%

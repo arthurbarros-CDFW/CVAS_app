@@ -614,16 +614,21 @@ avg_dt_effort<-count_expansions%>%
 Next we need to deal with sections that have opening days, which are
 tracked separately because of the high disproportionate effort they
 experience. Sections with opening days are 5, 6, and 7.1B and 7.1S. Here
-the code runner will also have to set the opening dates manually each
-year in the 'opening_dates' value. For sections with opening dates, we
+the code will reference the opening and closing dates selected by the
+user in the application and take the year and append special opening
+dates info for the given sections. For sections with opening dates, we
 change their section code by pasting 'opener' to the end of it. We then
 rejoin everything back to the `avg_dt_efforts`, and now have separate
 records marked for sections on their opening dates.
 
 ```{r summary_4, eval=FALSE}
 #deal with opening days
+selected_year<-format(open_date,"%Y")
 opener_sections<-c('5','6','7.1B','7.1S')
-opening_dates<-c(as.Date('2022-07-16'),as.Date('2022-07-16'),as.Date('2022-08-01'),as.Date('2022-08-01'))
+opening_dates<-c(as.Date(paste(selected_year,'07-16',sep='-')),
+                 as.Date(paste(selected_year,'07-16',sep='-')),
+                 as.Date(paste(selected_year,'08-01',sep='-')),
+                 as.Date(paste(selected_year,'08-01',sep='-')))
 opening_df<-data.frame(section=opener_sections,SurveyDate=opening_dates)
 
 openers_efforts<-avg_dt_effort%>%
@@ -720,3 +725,202 @@ expanded_efforts<-first_effort%>%rbind(multi_effort)
 Before we stop looking at effort, we also need two more data sets for
 our estimates, the average effort targeting Chinook for both count
 types, averaged for daily and monthly summaries.
+
+```{r summary_9, eval=FALSE}
+daily_effort<-avg_dt_effort
+daily_effort$CS_angler_effort<-daily_effort$angler_effort*daily_effort$ratio_cs
+daily_effort<-daily_effort%>%
+  mutate(CS_angler_effort=ifelse(is.na(CS_angler_effort),0,CS_angler_effort))%>%
+  group_by(SurveyDate,month,section,Day_Type)%>%
+  dplyr::summarise(multi_effort_average=mean(CS_angler_effort))
+
+monthly_effort<-daily_effort%>%
+  group_by(month,section)%>%
+  summarise(sum_hours=sum(multi_effort_average))
+```
+
+The above gives us two things: adds a 'multi_effort_average' to the
+`CS_angler_effort` data, and creates a `monthly_effort` data set that
+sums the multi_effort_average for each month.
+
+Now that we have estimates of the amount of angler effort targeting
+Chinook Salmon for each reach day and month combination, our next step
+is to utilize the roving data we created to estimate the harvest of
+Chinook.
+
+#### Estimating Chinook Salmon harvest
+
+To start with our roving data, we have to make sure we deal with
+separating the shore and boat angler data for sections 12.0D and 12.1.
+We do this in the following code chunk by changing the `MethodName`
+field to either 'B' or 'S' and then pasting it to the section name for
+the target sections.
+
+```{r summary_10, eval=FALSE}
+target_sections<-c('12.0D','12.1')
+target_method<-c('Boat','Guided boat party')
+
+roving_prep<-roving%>%
+  mutate(MethodName=ifelse(MethodName%in%target_method,'B','S'))
+roving_prep$section<-ifelse(roving_prep$section %in%target_sections,
+                            paste(roving_prep$section,
+                                  roving_prep$Method,sep=''),roving_prep$section)
+```
+
+Next we can create two new data sets: `hours_targeting_CS` which sums
+the angler effort targeting Chinook, and `CS_captured`, which provides
+the sum of Chinook captured for each survey. We'll use the `roving_prep`
+data we made above, group by section, date, and day type, and calculate
+the `TotalHours` targeting Chinook, and the total number of Chinook
+kept.
+
+```{r summary_11, eval=FALSE}
+
+hours_targeting_CS<-unique(select(roving_prep,section,SurveyDate,Day_Type,tgtSpecies,Page,IvLine,TotalHours))%>%
+  filter(tgtSpecies%in%tgt_species)%>%
+  group_by(section,SurveyDate,Day_Type)%>%
+  summarise(TotalHours=sum(TotalHours,na.rm=T))
+
+CS_captured<-unique(select(roving_prep,section,SurveyDate,Day_Type,tgtSpecies,SpeciesCaught,IvLine,Kept,Released,TotalHours))%>%
+  filter(SpeciesCaught=='CS', tgtSpecies==11)%>%
+  group_by(section,SurveyDate,Day_Type)%>%
+  summarise(Kept=sum(Kept),Released=sum(Released))
+```
+
+We can now estimate the daily Catch-per-Unit Effort (CPUE) for each
+survey that was conducted. We estimate catch CPUE, harvest CPUE, and
+released CPUE in the `daily_CPUE` data set. CPUE is calculated as:
+
+$$
+CPUE = \frac{kept+released}{\text{total hours}}
+$$
+
+```{r summary_12, eval=FALSE}
+daily_cpue<-hours_targeting_CS%>%left_join(CS_captured)
+daily_cpue$catch_CPUE<-(daily_cpue$Kept+daily_cpue$Released)/daily_cpue$TotalHours
+daily_cpue$harvest_CPUE<-(daily_cpue$Kept)/daily_cpue$TotalHours
+daily_cpue$released_CPUE<-(daily_cpue$Released)/daily_cpue$TotalHours
+
+daily_cpue[is.na(daily_cpue)] <- 0
+
+daily_cpue<-unique(select(ungroup(count_expansions),SurveyDate,section,Day_Type))%>%
+  left_join(daily_cpue)
+daily_cpue[is.na(daily_cpue)] <- 0
+```
+
+Before we continue, we also have to fix estimates for sections with
+opening days. This is done by creating the `opening_df` data set, which
+lists the sections and their opening days. This will allow us to have
+different opener sections for those specific surveys, incorporating
+their specific effort distributions.
+
+```{r summary_13, eval=FALSE}
+opening_df<-data.frame(section=opener_sections,SurveyDate=opening_dates)
+
+openers_cpue<-daily_cpue%>%
+  inner_join(opening_df)
+openers_cpue$section<-paste(openers_cpue$section,'opener')
+
+daily_cpue<-daily_cpue%>%
+  anti_join(opening_df)
+daily_cpue<-daily_cpue%>%rbind(openers_cpue)
+```
+
+Finally, we can use our `daily_cpue` data set to calculate the average
+cpue for each month, section, and day type (DT). We can then join the
+`avg_cpue` data set to the `expanded_efforts`, and estimate the total
+catch, harvest, and release for each day type.
+
+```{r summary_14, eval=FALSE}
+avg_cpue<-daily_cpue%>%
+  group_by(month=month(SurveyDate,label=T,abbr=F),section,Day_Type,year=year(daily_cpue$SurveyDate))%>%
+  summarise(avg_catch_cpue=mean(catch_CPUE),avg_harvest_cpue=mean(harvest_CPUE),avg_released_cpue=mean(released_CPUE))
+
+avg_cpue<-avg_cpue%>%
+  left_join(expanded_efforts)
+
+total_catch<-avg_cpue
+total_catch$Total_DT_Catch<-total_catch$avg_cs_effort*total_catch$avg_catch_cpue*total_catch$day_tally
+
+total_catch$Total_DT_Harvest<-total_catch$avg_cs_effort*total_catch$avg_harvest_cpue*total_catch$day_tally
+
+total_catch$Total_DT_Released<-total_catch$avg_cs_effort*total_catch$avg_released_cpue*total_catch$day_tally
+```
+
+Our final data set, `total_catch`, contains the average unit of effor
+for catch, harvest, and release, as well as the total estimates of
+catch, harvest, and release for each month, section, count type, and day
+type.
+
+#### Expanding by catch
+
+For this next section, we can focus on the by-catch data we prepared
+earlier, to estimate the number of Chinook captured, harvested, and
+released for anglers not targeting them, also known as 'by-catch'.
+
+We start by calculating the total hours of effort and the number of kept
+and released Chinook for each day and section. Then, similar to how we
+did above, we calculate CPUE values for captured, kept, and released
+Chinook.
+
+```{r summary_15, eval=FALSE}
+bycatch_expanded<-by_catch%>%
+  group_by(SurveyDate,section,Day_Type)%>%
+  summarise(TotalHours=sum(TotalHours),Kept=sum(Kept),Released=sum(Released))
+
+bycatch_expanded$catch_CPUE<-(bycatch_expanded$Kept+bycatch_expanded$Released)/bycatch_expanded$TotalHours
+bycatch_expanded$harvest_CPUE<-(bycatch_expanded$Kept)/bycatch_expanded$TotalHours
+bycatch_expanded$released_CPUE<-(bycatch_expanded$Released)/bycatch_expanded$TotalHours
+
+bycatch_expanded$month<-month(bycatch_expanded$SurveyDate,label = T,abbr = F)
+```
+
+Next we want to create an `empty_bycatch` data set, which takes the
+roving data and inputs zeros for catch, released, and kept values. This
+data set will represent the effort and lack of Chinook catch for
+by-catch data, and is then joined to the expanded by-catch data we just
+created.
+
+```{r summary_16, eval=FALSE}
+
+#create zeros for all other date sections
+empty_bycatch<-unique(select(roving_prep,section,SurveyDate,Day_Type,TotalHours))%>%
+  group_by(SurveyDate,section,Day_Type)%>%
+  summarise(TotalHours=sum(TotalHours))
+empty_bycatch$Kept=0
+empty_bycatch$Released=0
+empty_bycatch$catch_CPUE=0
+empty_bycatch$month<-month(empty_bycatch$SurveyDate,label = T,abbr = F)
+empty_bycatch$harvest_CPUE<-0
+empty_bycatch$released_CPUE<-0
+
+empty_bycatch<-empty_bycatch%>%
+  anti_join(bycatch_expanded,by=c('SurveyDate','section'))
+
+bycatch_expanded<-bycatch_expanded%>%
+  rbind(empty_bycatch)
+```
+
+We now want to take the above and calculate the average Chinook by-catch
+for each section, month, and day type.
+
+```{r summary_17, eval=FALSE}
+avg_bycatch<-bycatch_expanded%>%
+  group_by(month,section,Day_Type,year=year(SurveyDate))%>%
+  summarise(avg_DT_catchCPUE=mean(catch_CPUE),
+            avg_DT_harvestCPUE=mean(harvest_CPUE),
+            avg_DT_releasedCPUE=mean(released_CPUE))
+```
+
+Now we can bring in our average day type effort for Chinook, and
+estimate the total by-catch effort as the effort of anglers not
+targeting Chinook salmon.
+
+```{r summary_18, eval=FALSE}
+#bring in effort data
+avg_bycatch<-avg_bycatch%>%
+  left_join(select(avg_dt_effort,section,SurveyDate,Day_Type,angler_effort,ratio_cs))
+
+avg_bycatch$ratio_bycatch<-1-avg_bycatch$ratio_cs
+avg_bycatch$bycatch_effort<-avg_bycatch$angler_effort*avg_bycatch$ratio_bycatch
+```
