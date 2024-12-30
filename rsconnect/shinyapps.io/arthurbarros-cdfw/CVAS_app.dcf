@@ -5,7 +5,7 @@ account: arthurbarros-cdfw
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 12548273
-bundleId:
+bundleId: 9266385
 url: https://arthurbarros-cdfw.shinyapps.io/CVAS_app/
 version: 1
 asMultiple: FALSE
